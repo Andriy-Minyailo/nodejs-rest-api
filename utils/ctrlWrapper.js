@@ -1,7 +1,7 @@
 const ctrlWrapper = (ctrl) => {
   const decor = async (req, res, next) => {
     try {
-      ctrl(req, res);
+      await ctrl(req, res);
     } catch (error) {
       next(error);
     }
