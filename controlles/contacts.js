@@ -5,6 +5,7 @@ const ctrlWrapper = require("../utils/ctrlWrapper");
 
 const listContacts = async (req, res) => {
   const result = await Contact.find();
+  console.log(result);
   res.json(result);
 };
 
