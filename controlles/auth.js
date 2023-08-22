@@ -69,9 +69,22 @@ const logout = async (req, res) => {
   res.status(204).json({ message: "" });
 };
 
+const subscriptionRenewal = async (req, res) => {
+  const { _id } = req.user;
+  const user = await User.findByIdAndUpdate(_id, req.body, {
+    new: true,
+  });
+
+  res.json({
+    email: user.email,
+    subscription: user.subscription,
+  });
+};
+
 module.exports = {
   register: ctrlWrapper(register),
   login: ctrlWrapper(login),
   getCurrent: ctrlWrapper(getCurrent),
   logout: ctrlWrapper(logout),
+  subscriptionRenewal: ctrlWrapper(subscriptionRenewal),
 };
